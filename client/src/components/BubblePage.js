@@ -14,7 +14,7 @@ const BubblePage = () => {
   useEffect(() => {
     authAxios
       .get(`http://localhost:5000/api/colors`)
-      .then(res => console.log(res.data))
+      .then(res => setColorList(res.data))
       .catch(err => console.log(err));
   }, []);
 
