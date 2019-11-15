@@ -23,6 +23,10 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    authAxios
+      .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
+      .then(res => updateColors(res.data))
+      .catch(err => console.log("Editing error", err));
   };
 
   const deleteColor = color => {
@@ -32,7 +36,7 @@ const ColorList = ({ colors, updateColors }) => {
       .then(res => {
         updateColors(res.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log("Delete error", err));
   };
 
   return (
